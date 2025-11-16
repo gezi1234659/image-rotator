@@ -140,12 +140,12 @@ def main():
     # 获取旋转角度
     while True:
         try:
-            angle_input = input("请输入旋转角度(0-360度): ").strip()
+            angle_input = input("请输入旋转角度(-360到360度): ").strip()
             rotation_angle = float(angle_input)
-            if 0 <= rotation_angle <= 360:
+            if -360 <= rotation_angle <= 360:
                 break
             else:
-                print("错误: 角度必须在0-360度之间!")
+                print("错误: 角度必须在-360到360度之间!")
         except ValueError:
             print("错误: 请输入有效的数字!")
     
@@ -159,6 +159,8 @@ def main():
     print(f"输入文件夹: {input_folder}")
     print(f"输出文件夹: {output_folder}")
     print(f"旋转角度: {rotation_angle}度")
+    direction = "顺时针" if rotation_angle < 0 else "逆时针"
+    print(f"旋转方向: {direction}")
     print(f"待处理图片: {len(image_files)} 个")
     
     # 确认开始处理
